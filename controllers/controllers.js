@@ -5,16 +5,18 @@ const connection = require("../data/data");
 const index = (req, res) => {
     const sql = 'SELECT * FROM posts';
 
-    connection.query(sql, (err, res) => {
-        if (err) return res.status(500).json({
-            massage: 'Errore durante il recupero dei post'
-        })
-        return req.status(200).json({
-            status: 'Success',
-            data: post,
-        })
+    connection.query(sql, (err, results) => {
+        if (err) {
+            return res.status(500).json({
+                message: "Errore durante il recupero dei post"
+            });
+        }
+        return res.status(200).json({
+            status: "Success",
+            data: results,
+        });
     });
-}
+};
 
 // SHOW
 const show = (req, res) => {

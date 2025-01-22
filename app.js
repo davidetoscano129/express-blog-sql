@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 });
 
 // Middleware che gestisce errore
-app.use(errorHandler);
+// app.use(errorHandler);
 
 // Route di listening
 app.listen(port, () => {
