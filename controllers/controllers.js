@@ -36,6 +36,19 @@ const show = (req, res) => {
 
 // DESTROY
 const destroy = (req, res) => {
+    const id = req.params.id;
+    const sql = "DELETE FROM `posts` WHERE id = ?";
+    connection.query(sql, [id], (error) => {
+        if (error) {
+            return res.status(500).json({
+                message: "Errore interno del server",
+            });
+        } else {
+            return res.sendStatus(204);
+        }
+    });
+
+
 };
 
 module.exports = {
